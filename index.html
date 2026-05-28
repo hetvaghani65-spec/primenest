@@ -1,38 +1,97 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>PrimeNest Toys</title>
-<style>
-body{
-font-family:Arial;
-background:#ffe4f2;
-text-align:center;
-padding:50px;
-}
-h1{
-color:purple;
-font-size:50px;
-}
-p{
-font-size:22px;
-}
-button{
-padding:15px 30px;
-background:pink;
-border:none;
-color:white;
-font-size:20px;
-border-radius:10px;
-}
-</style>
-</head>
-<body>
+export default function ToyStoreWebsite() { const toys = [ { name: 'Teddy Bear', price: '₹799', image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?q=80&w=1200&auto=format&fit=crop' }, { name: 'Remote Car', price: '₹1,499', image: 'https://images.unsplash.com/photo-1519677100203-a0e668c92439?q=80&w=1200&auto=format&fit=crop' }, { name: 'Building Blocks', price: '₹999', image: 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=1200&auto=format&fit=crop' }, ];
 
-<h1>PrimeNest Toys 🧸</h1>
+return ( <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-pink-50 text-gray-800"> {/* Navbar */} <nav className="flex items-center justify-between px-8 py-5 bg-white shadow-md sticky top-0 z-50"> <h1 className="text-3xl font-extrabold text-pink-600">PrimeNest</h1> <div className="flex gap-6 text-lg font-medium"> <a href="#home" className="hover:text-pink-500">Home</a> <a href="#products" className="hover:text-pink-500">Products</a> <a href="#about" className="hover:text-pink-500">About</a> <a href="#contact" className="hover:text-pink-500">Contact</a> </div> </nav>
 
-<p>Welcome to PrimeNest Toy Store</p>
+{/* Hero Section */}
+  <section
+    id="home"
+    className="flex flex-col items-center justify-center text-center px-6 py-24"
+  >
+    <h2 className="text-5xl md:text-6xl font-extrabold text-purple-700 mb-6">
+      Fun Toys For Every Kid 🎁
+    </h2>
+    <p className="text-lg md:text-xl max-w-2xl text-gray-600 mb-8">
+      Discover amazing toys, games, and gifts for children of all ages.
+      Safe, colorful, and full of joy.
+    </p>
+    <button className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-4 rounded-2xl text-lg font-semibold shadow-lg transition">
+      Shop Now
+    </button>
+  </section>
 
-<button>Shop Now</button>
+  {/* Products */}
+  <section id="products" className="px-8 py-16">
+    <h3 className="text-4xl font-bold text-center text-purple-700 mb-12">
+      Popular Toys
+    </h3>
 
-</body>
-</html>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-7xl mx-auto">
+      {toys.map((toy, index) => (
+        <div
+          key={index}
+          className="bg-white rounded-3xl overflow-hidden shadow-xl hover:scale-105 transition duration-300"
+        >
+          <img
+            src={toy.image}
+            alt={toy.name}
+            className="h-72 w-full object-cover"
+          />
+          <div className="p-6">
+            <h4 className="text-2xl font-bold mb-2">{toy.name}</h4>
+            <p className="text-pink-600 text-xl font-semibold mb-4">
+              {toy.price}
+            </p>
+            <button className="w-full bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-xl font-semibold">
+              Buy Now
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {/* About */}
+  <section id="about" className="px-8 py-20 bg-white text-center">
+    <h3 className="text-4xl font-bold text-pink-600 mb-6">About Us</h3>
+    <p className="max-w-3xl mx-auto text-lg text-gray-600 leading-8">
+      PrimeNest is a modern toy store website designed to bring happiness to
+      kids and families. We provide high-quality toys, educational games,
+      and exciting gifts at affordable prices.
+    </p>
+  </section>
+
+  {/* Contact */}
+  <section id="contact" className="px-8 py-20 text-center">
+    <h3 className="text-4xl font-bold text-purple-700 mb-6">Contact Us</h3>
+    <p className="text-lg text-gray-600 mb-2">📧 contact@primenest.com</p>
+    <p className="text-lg text-gray-600 mb-8">📞 +91 98765 43210</p>
+
+    <form className="max-w-xl mx-auto bg-white p-8 rounded-3xl shadow-xl space-y-5">
+      <input
+        type="text"
+        placeholder="Your Name"
+        className="w-full p-4 rounded-xl border"
+      />
+      <input
+        type="email"
+        placeholder="Your Email"
+        className="w-full p-4 rounded-xl border"
+      />
+      <textarea
+        placeholder="Message"
+        rows="4"
+        className="w-full p-4 rounded-xl border"
+      ></textarea>
+      <button className="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 rounded-xl font-semibold w-full">
+        Send Message
+      </button>
+    </form>
+  </section>
+
+  {/* Footer */}
+  <footer className="bg-purple-700 text-white text-center py-6 mt-10">
+    <p>© 2026 PrimeNest. All Rights Reserved.</p>
+  </footer>
+</div>
+
+); }
